@@ -7,40 +7,32 @@
     <link rel="icon" href="logo.jpg">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-    @keyframes float {
-    0%, 100% {
-    transform: translateY(0);
-    }
-    50% {
-    transform: translateY(-10px);
-    }
-}
-.floating {
-    animation: float 3s ease-in-out infinite;
-}
-    @keyframes typing {
-    from { width: 0 }
-    to { width: 100% }
-}
-
-@keyframes blink {
-    50% { border-color: transparent }
-}
-
-.typing-text {
-    overflow: hidden;
-    white-space: nowrap;
-    border-right: 3px solid white;
-    width: 0;
-    animation:
-    typing 4s steps(30, end) forwards,
-    blink 0.7s step-end infinite;
-}
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        @keyframes blink {
+            50% { border-color: transparent }
+        }
+        .typing-text {
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 3px solid white;
+            width: 0;
+            animation: typing 4s steps(30, end) forwards, blink 0.7s step-end infinite;
+        }
         body {
             background-color: #141414;
             color: white;
             font-family: 'Arial', sans-serif;
-            font-size: 18px; /* Increased base font size */
+            font-size: 18px;
         }
         .course-card {
             transition: transform 0.3s ease;
@@ -77,31 +69,18 @@
             cursor: pointer;
             z-index: 10;
         }
-        .carousel-btn.left {
-            left: 0;
-        }
-        .carousel-btn.right {
-            right: 0;
-        }
+        .carousel-btn.left { left: 0; }
+        .carousel-btn.right { right: 0; }
         .result-message {
             display: none;
             margin-top: 1rem;
             padding: 1rem;
             border-radius: 0.375rem;
         }
-        .result-message.correct {
-            background-color: #10b981;
-        }
-        .result-message.incorrect {
-            background-color: #e03c3c;
-        }
-        .learning-section {
-            display: none;
-        }
-        .learning-section.active {
-            display: block;
-        }
-        /* Modal Styles */
+        .result-message.correct { background-color: #10b981; }
+        .result-message.incorrect { background-color: #e03c3c; }
+        .learning-section { display: none; }
+        .learning-section.active { display: block; }
         .modal {
             display: none;
             position: fixed;
@@ -130,13 +109,12 @@
             border: 1px solid #4a4a4a;
             color: white;
             border-radius: 0.375rem;
-            font-size: 16px; /* Increased input font size */
+            font-size: 16px;
         }
         .modal-content input:focus {
             outline: none;
             border-color: #ef4444;
         }
-        /* Checkmark Animation */
         .checkmark-container {
             display: none;
             flex-direction: column;
@@ -162,14 +140,10 @@
             animation: fadeIn 0.5s ease forwards 0.5s;
         }
         @keyframes draw {
-            to {
-                stroke-dashoffset: 0;
-            }
+            to { stroke-dashoffset: 0; }
         }
         @keyframes fadeIn {
-            to {
-                opacity: 1;
-            }
+            to { opacity: 1; }
         }
     </style>
 </head>
@@ -178,7 +152,7 @@
     <header class="fixed top-0 w-full bg-black bg-opacity-80 z-50">
         <nav class="container mx-auto flex justify-between items-center py-4 px-6">
             <div class="text-3xl font-bold text-lime-700">Dhanil's English Journey</div>
-            <div class="space-x-4 text-lg"> <!-- Increased nav link font size -->
+            <div class="space-x-4 text-lg">
                 <a href="#home" class="hover:text-red-600">Beranda</a>
                 <a href="#creator-profile" class="hover:text-red-600">Profil Pembuat</a>
                 <a href="#courses" class="hover:text-blue-600">Kursus</a>
@@ -191,13 +165,13 @@
     <div id="login-modal" class="modal">
         <div class="modal-content">
             <div id="login-form">
-                <h2 class="text-3xl font-bold mb-4 text-center">Masuk ke Akun Anda</h2> <!-- Increased modal heading -->
+                <h2 class="text-3xl font-bold mb-4 text-center">Masuk ke Akun Anda</h2>
                 <div>
-                    <label for="email" class="block text-gray-400 mb-2 text-base">Email</label> <!-- Increased label font -->
+                    <label for="email" class="block text-gray-400 mb-2 text-base">Email</label>
                     <input type="email" id="email" placeholder="Masukkan email" autocomplete="off">
                 </div>
                 <div>
-                    <label for="password" class="block text-gray-400 mb-2 text-base">Kata Sandi</label> <!-- Increased label font -->
+                    <label for="password" class="block text-gray-400 mb-2 text-base">Kata Sandi</label>
                     <input type="password" id="password" placeholder="Masukkan kata sandi">
                 </div>
                 <div class="flex justify-between mt-6">
@@ -209,7 +183,7 @@
                 <svg class="checkmark" viewBox="0 0 100 100">
                     <path d="M20,50 L40,70 L80,30" />
                 </svg>
-                <p class="success-text text-3xl font-bold mt-4 text-center">Berhasil Masuk</p> <!-- Increased success text -->
+                <p class="success-text text-3xl font-bold mt-4 text-center">Berhasil Masuk</p>
                 <button id="close-success" class="bg-gray-600 text-white px-4 py-2 rounded hover:bg-gray-700 mt-6 text-base">Tutup</button>
             </div>
         </div>
@@ -218,32 +192,48 @@
     <!-- Hero Section -->
     <section id="home" class="hero-section h-screen flex items-center justify-center">
         <div class="text-center">
-    <h1 class="text-6xl font-bold mb-4 typing-text">
-    Kuasai Tenses Bahasa Inggris
-    </h1>
-    <p class="text-2xl mb-6">
-    Pelajari semua tenses utama bahasa Inggris dengan kursus interaktif kami.
-    </p>
-    <a href="#courses" class="bg-red-600 text-white px-6 py-3 rounded hover:bg-red-700 text-lg">
-    Mulai Belajar Sekarang
-    </a>
-</div>
+            <h1 class="text-6xl font-bold mb-4 typing-text">Kuasai Bahasa Inggris</h1>
+            <p class="text-2xl mb-6">Pelajari tata bahasa Inggris dengan kursus interaktif kami.</p>
+            <a href="#courses" class="bg-red-600 text-white px-6 py-3 rounded hover:bg-red-700 text-lg">Mulai Belajar Sekarang</a>
+        </div>
     </section>
 
     <!-- Course Section -->
     <section id="courses" class="container mx-auto py-12">
-        <h2 class="text-4xl font-bold mb-6">Kursus Tenses Bahasa Inggris</h2> <!-- Increased section heading -->
+        <h2 class="text-4xl font-bold mb-6">Kursus Bahasa Inggris</h2>
+        
+        <!-- English Grammar Courses -->
+        <h3 class="text-3xl font-semibold mb-4">Kursus Tata Bahasa</h3>
+        <div class="carousel-container mb-12">
+            <button class="carousel-btn left" onclick="scrollCarousel('grammar', 'left')">❮</button>
+            <div id="grammar-carousel" class="carousel flex gap-4 px-4">
+                <!-- Course Card: Active and Passive Voice -->
+                <div class="course-card bg-gray-800 rounded overflow-hidden" onclick="scrollToSection('active-passive')">
+                    <img src="passiveactive.jpg" alt="Active and Passive Voice" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-xl font-semibold">Mastering Active and Passive Voice</h3>
+                        <p class="text-base text-gray-400">Pelajari cara menggunakan active dan passive voice untuk kalimat yang lebih variatif.</p>
+                        <p class="text-base mt-2">Instruktur: Emma Wilson</p>
+                        <p class="text-base text-yellow-400">★★★★☆ (4.7)</p>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-btn right" onclick="scrollCarousel('grammar', 'right')">❯</button>
+        </div>
+
+        <!-- Tenses Courses -->
+        <h3 class="text-3xl font-semibold mb-4">Kursus Tenses</h3>
         <div class="carousel-container">
-            <button class="carousel-btn left" onclick="scrollCarousel('left')">❮</button>
-            <div class="carousel flex gap-4 px-4">
+            <button class="carousel-btn left" onclick="scrollCarousel('tenses', 'left')">❮</button>
+            <div id="tenses-carousel" class="carousel flex gap-4 px-4">
                 <!-- Course Card: Simple Present Tense -->
                 <div class="course-card bg-gray-800 rounded overflow-hidden" onclick="scrollToSection('simple-present')">
                     <img src="presenttense.png" alt="Simple Present Tense" class="w-full h-48 object-cover">
                     <div class="p-4">
-                        <h3 class="text-xl font-semibold">Simple Present Tense</h3> <!-- Increased card title -->
-                        <p class="text-base text-gray-400">Pelajari cara menggunakan Simple Present untuk kebiasaan dan fakta umum.</p> <!-- Increased card text -->
-                        <p class="text-base mt-2">Instruktur: Emily White</p> <!-- Increased instructor text -->
-                        <p class="text-base text-yellow-400">★★★★★ (4.8)</p> <!-- Increased rating text -->
+                        <h3 class="text-xl font-semibold">Simple Present Tense</h3>
+                        <p class="text-base text-gray-400">Pelajari cara menggunakan Simple Present untuk kebiasaan dan fakta umum.</p>
+                        <p class="text-base mt-2">Instruktur: Emily White</p>
+                        <p class="text-base text-yellow-400">★★★★★ (4.8)</p>
                     </div>
                 </div>
                 <!-- Course Card: Past Tense -->
@@ -307,38 +297,99 @@
                     </div>
                 </div>
             </div>
-            <button class="carousel-btn right" onclick="scrollCarousel('right')">❯</button>
+            <button class="carousel-btn right" onclick="scrollCarousel('tenses', 'right')">❯</button>
+        </div>
+    </section>
+
+    <!-- Active and Passive Voice Learning Section -->
+    <section id="active-passive" class="container mx-auto py-12 learning-section">
+        <h2 class="text-4xl font-bold mb-6 text-center">Mastering Active and Passive Voice</h2>
+        <div class="bg-gray-800 rounded p-6">
+            <h3 class="text-3xl font-semibold mb-4">Apa itu Active dan Passive Voice?</h3>
+            <p class="text-lg text-gray-400 mb-4">Active Voice menekankan pelaku aksi (subjek) yang melakukan tindakan, sedangkan Passive Voice menekankan objek yang menerima aksi. Passive Voice sering digunakan ketika pelaku tidak penting atau tidak diketahui.</p>
+            <h3 class="text-2xl font-semibold mb-2">Struktur Kalimat</h3>
+            <ul class="text-lg text-gray-400 list-disc list-inside mb-4">
+                <li><strong>Active Voice (Umum):</strong> Subject + Verb + Object <br>Contoh: She writes a letter.</li>
+                <li><strong>Passive Voice (Umum):</strong> Subject + to be (sesuai tenses) + Verb3 (past participle) + (by + Agent) <br>Contoh: A letter is written (by her).</li>
+                <li><strong>Catatan:</strong> Struktur passive voice bervariasi berdasarkan tenses, misalnya:
+                    <ul class="list-circle list-inside ml-4">
+                        <li>Simple Present: is/are + Verb3 (The room is cleaned daily.)</li>
+                        <li>Simple Past: was/were + Verb3 (The book was read yesterday.)</li>
+                        <li>Future: will be + Verb3 (The project will be completed tomorrow.)</li>
+                    </ul>
+                </li>
+            </ul>
+            <h3 class="text-2xl font-semibold mb-2">Contoh Kalimat</h3>
+            <ul class="text-lg text-gray-400 list-disc list-inside mb-4">
+                <li><strong>Active:</strong> They paint the house every year. <br><strong>Passive:</strong> The house is painted every year.</li>
+                <li><strong>Active:</strong> He wrote a novel last year. <br><strong>Passive:</strong> A novel was written last year.</li>
+                <li><strong>Active:</strong> We will finish the task tomorrow. <br><strong>Passive:</strong> The task will be finished tomorrow.</li>
+                <li><strong>Active:</strong> She is cooking dinner now. <br><strong>Passive:</strong> Dinner is being cooked now.</li>
+            </ul>
+            <h3 class="text-2xl font-semibold mb-2">Latihan Pilihan Ganda</h3>
+            <p class="text-lg text-gray-400 mb-4">Pilih jawaban yang benar untuk melengkapi kalimat dalam Active atau Passive Voice:</p>
+            <div id="quiz-active-passive">
+                <div class="mb-6">
+                    <p class="text-lg text-gray-300 mb-2">1. The room ___ every day.</p>
+                    <label class="block text-base text-gray-400"><input type="radio" name="ap-q1" value="is cleaned"> is cleaned</label>
+                    <label class="block text-base text-gray-400"><input type="radio" name="ap-q1" value="cleans"> cleans</label>
+                    <label class="block text-base text-gray-400"><input type="radio" name="ap-q1" value="cleaning"> cleaning</label>
+                </div>
+                <div class="mb-6">
+                    <p class="text-lg text-gray-300 mb-2">2. She ___ a letter yesterday.</p>
+                    <label class="block text-base text-gray-400"><input type="radio" name="ap-q2" value="wrote"> wrote</label>
+                    <label class="block text-base text-gray-400"><input type="radio" name="ap-q2" value="was written"> was written</label>
+                    <label class="block text-base text-gray-400"><input type="radio" name="ap-q2" value="writing"> writing</label>
+                </div>
+                <div class="mb-6">
+                    <p class="text-lg text-gray-300 mb-2">3. The project will ___ tomorrow.</p>
+                    <label class="block text-base text-gray-400"><input type="radio" name="ap-q3" value="be completed"> will be completed</label>
+                    <label class="block text-base text-gray-400"><input type="radio" name="ap-q3" value="complete"> will complete</label>
+                    <label class="block text-base text-gray-400"><input type="radio" name="ap-q3" value="completing"> completing</label>
+                </div>
+                <div class="mb-6">
+                    <p class="text-lg text-gray-300 mb-2">4. They ___ the house now.</p>
+                    <label class="block text-base text-gray-400"><input type="radio" name="ap-q4" value="are painting"> are painting</label>
+                    <label class="block text-base text-gray-400"><input type="radio" name="ap-q4" value="is painted"> is painted</label>
+                    <label class="block text-base text-gray-400"><input type="radio" name="ap-q4" value="painted"> painted</label>
+                </div>
+                <div class="mb-6">
+                    <p class="text-lg text-gray-300 mb-2">5. The book ___ by the students last week.</p>
+                    <label class="block text-base text-gray-400"><input type="radio" name="ap-q5" value="was read"> was read</label>
+                    <label class="block text-base text-gray-400"><input type="radio" name="ap-q5" value="read"> read</label>
+                    <label class="block text-base text-gray-400"><input type="radio" name="ap-q5" value="reading"> reading</label>
+                </div>
+                <button type="button" onclick="checkAnswers('active-passive', 'ap')" class="bg-red-600 text-white px-6 py-2 rounded hover:bg-red-700 text-base">Submit</button>
+                <div id="result-active-passive" class="result-message text-base"></div>
+            </div>
         </div>
     </section>
 
     <!-- Simple Present Tense Learning Section -->
     <section id="simple-present" class="container mx-auto py-12 learning-section">
-        <h2 class="text-4xl font-bold mb-6 text-center">Simple Present Tense</h2> <!-- Increased section heading -->
+        <h2 class="text-4xl font-bold mb-6 text-center">Simple Present Tense</h2>
         <div class="bg-gray-800 rounded p-6">
-            <h3 class="text-3xl font-semibold mb-4">Apa itu Simple Present Tense?</h3> <!-- Increased subheading -->
-            <p class="text-lg text-gray-400 mb-4">Simple Present Tense digunakan untuk menyatakan kebiasaan, fakta umum, rutinitas, dan perasaan atau pendapat yang bersifat tetap.</p> <!-- Increased text -->
-            
-            <h3 class="text-2xl font-semibold mb-2">Struktur Kalimat</h3> <!-- Increased subheading -->
-            <ul class="text-lg text-gray-400 list-disc list-inside mb-4"> <!-- Increased list text -->
+            <h3 class="text-3xl font-semibold mb-4">Apa itu Simple Present Tense?</h3>
+            <p class="text-lg text-gray-400 mb-4">Simple Present Tense digunakan untuk menyatakan kebiasaan, fakta umum, rutinitas, dan perasaan atau pendapat yang bersifat tetap.</p>
+            <h3 class="text-2xl font-semibold mb-2">Struktur Kalimat</h3>
+            <ul class="text-lg text-gray-400 list-disc list-inside mb-4">
                 <li><strong>Positif:</strong> Subject + Verb (add -s/-es for he, she, it) <br>Contoh: She walks to school every day.</li>
                 <li><strong>Negatif:</strong> Subject + do/does + not + Verb <br>Contoh: They do not play football.</li>
                 <li><strong>Pertanyaan:</strong> Do/Does + Subject + Verb? <br>Contoh: Does he like coffee?</li>
             </ul>
-
-            <h3 class="text-2xl font-semibold mb-2">Contoh Kalimat</h3> <!-- Increased subheading -->
-            <ul class="text-lg text-gray-400 list-disc list-inside mb-4"> <!-- Increased list text -->
+            <h3 class="text-2xl font-semibold mb-2">Contoh Kalimat</h3>
+            <ul class="text-lg text-gray-400 list-disc list-inside mb-4">
                 <li>I drink tea every morning.</li>
                 <li>The sun rises in the east.</li>
                 <li>We do not eat meat.</li>
                 <li>Does she study English?</li>
             </ul>
-
-            <h3 class="text-2xl font-semibold mb-2">Latihan Pilihan Ganda</h3> <!-- Increased subheading -->
-            <p class="text-lg text-gray-400 mb-4">Pilih jawaban yang benar untuk melengkapi kalimat dalam Simple Present Tense:</p> <!-- Increased text -->
+            <h3 class="text-2xl font-semibold mb-2">Latihan Pilihan Ganda</h3>
+            <p class="text-lg text-gray-400 mb-4">Pilih jawaban yang benar untuk melengkapi kalimat dalam Simple Present Tense:</p>
             <div id="quiz-simple-present">
                 <div class="mb-6">
-                    <p class="text-lg text-gray-300 mb-2">1. She ___ to school every day.</p> <!-- Increased question text -->
-                    <label class="block text-base text-gray-400"><input type="radio" name="sp-q1" value="walks"> walks</label> <!-- Increased option text -->
+                    <p class="text-lg text-gray-300 mb-2">1. She ___ to school every day.</p>
+                    <label class="block text-base text-gray-400"><input type="radio" name="sp-q1" value="walks"> walks</label>
                     <label class="block text-base text-gray-400"><input type="radio" name="sp-q1" value="walk"> walk</label>
                     <label class="block text-base text-gray-400"><input type="radio" name="sp-q1" value="walking"> walking</label>
                 </div>
@@ -366,8 +417,8 @@
                     <label class="block text-base text-gray-400"><input type="radio" name="sp-q5" value="do not go"> do not go</label>
                     <label class="block text-base text-gray-400"><input type="radio" name="sp-q5" value="not going"> not going</label>
                 </div>
-                <button type="button" onclick="checkAnswers('simple-present', 'sp')" class="bg-red-600 text-white px-6 py-2 rounded hover:bg-red-700 text-base">Submit</button> <!-- Increased button text -->
-                <div id="result-simple-present" class="result-message text-base"></div> <!-- Increased result text -->
+                <button type="button" onclick="checkAnswers('simple-present', 'sp')" class="bg-red-600 text-white px-6 py-2 rounded hover:bg-red-700 text-base">Submit</button>
+                <div id="result-simple-present" class="result-message text-base"></div>
             </div>
         </div>
     </section>
@@ -378,14 +429,12 @@
         <div class="bg-gray-800 rounded p-6">
             <h3 class="text-3xl font-semibold mb-4">Apa itu Past Tense?</h3>
             <p class="text-lg text-gray-400 mb-4">Past Tense digunakan untuk menyatakan kejadian atau aktivitas yang telah selesai di masa lalu.</p>
-            
             <h3 class="text-2xl font-semibold mb-2">Struktur Kalimat</h3>
             <ul class="text-lg text-gray-400 list-disc list-inside mb-4">
                 <li><strong>Positif:</strong> Subject + Verb (past form, add -ed for regular verbs) <br>Contoh: She walked to school yesterday.</li>
                 <li><strong>Negatif:</strong> Subject + did + not + Verb (base form) <br>Contoh: They did not play football.</li>
                 <li><strong>Pertanyaan:</strong> Did + Subject + Verb (base form)? <br>Contoh: Did he like coffee?</li>
             </ul>
-
             <h3 class="text-2xl font-semibold mb-2">Contoh Kalimat</h3>
             <ul class="text-lg text-gray-400 list-disc list-inside mb-4">
                 <li>I visited my grandmother last weekend.</li>
@@ -393,7 +442,6 @@
                 <li>We did not watch the movie.</li>
                 <li>Did she study English?</li>
             </ul>
-
             <h3 class="text-2xl font-semibold mb-2">Latihan Pilihan Ganda</h3>
             <p class="text-lg text-gray-400 mb-4">Pilih jawaban yang benar untuk melengkapi kalimat dalam Past Tense:</p>
             <div id="quiz-past-tense">
@@ -439,14 +487,12 @@
         <div class="bg-gray-800 rounded p-6">
             <h3 class="text-3xl font-semibold mb-4">Apa itu Future Tense?</h3>
             <p class="text-lg text-gray-400 mb-4">Future Tense digunakan untuk menyatakan rencana, prediksi, atau kejadian yang akan terjadi di masa depan.</p>
-            
             <h3 class="text-2xl font-semibold mb-2">Struktur Kalimat</h3>
             <ul class="text-lg text-gray-400 list-disc list-inside mb-4">
                 <li><strong>Positif:</strong> Subject + will + Verb (base form) <br>Contoh: She will travel to Japan next month.</li>
                 <li><strong>Negatif:</strong> Subject + will + not + Verb (base form) <br>Contoh: They will not attend the party.</li>
                 <li><strong>Pertanyaan:</strong> Will + Subject + Verb (base form)? <br>Contoh: Will he call you?</li>
             </ul>
-
             <h3 class="text-2xl font-semibold mb-2">Contoh Kalimat</h3>
             <ul class="text-lg text-gray-400 list-disc list-inside mb-4">
                 <li>I will visit my friends tomorrow.</li>
@@ -454,7 +500,6 @@
                 <li>We will not go to the beach.</li>
                 <li>Will she join the club?</li>
             </ul>
-
             <h3 class="text-2xl font-semibold mb-2">Latihan Pilihan Ganda</h3>
             <p class="text-lg text-gray-400 mb-4">Pilih jawaban yang benar untuk melengkapi kalimat dalam Future Tense:</p>
             <div id="quiz-future-tense">
@@ -500,14 +545,12 @@
         <div class="bg-gray-800 rounded p-6">
             <h3 class="text-3xl font-semibold mb-4">Apa itu Present Continuous Tense?</h3>
             <p class="text-lg text-gray-400 mb-4">Present Continuous Tense digunakan untuk menyatakan aktivitas yang sedang berlangsung saat ini atau sementara.</p>
-            
             <h3 class="text-2xl font-semibold mb-2">Struktur Kalimat</h3>
             <ul class="text-lg text-gray-400 list-disc list-inside mb-4">
                 <li><strong>Positif:</strong> Subject + am/is/are + Verb-ing <br>Contoh: She is studying English now.</li>
                 <li><strong>Negatif:</strong> Subject + am/is/are + not + Verb-ing <br>Contoh: They are not playing football.</li>
                 <li><strong>Pertanyaan:</strong> Am/Is/Are + Subject + Verb-ing? <br>Contoh: Is he watching TV?</li>
             </ul>
-
             <h3 class="text-2xl font-semibold mb-2">Contoh Kalimat</h3>
             <ul class="text-lg text-gray-400 list-disc list-inside mb-4">
                 <li>I am reading a book right now.</li>
@@ -515,7 +558,6 @@
                 <li>We are not working today.</li>
                 <li>Is she cooking dinner?</li>
             </ul>
-
             <h3 class="text-2xl font-semibold mb-2">Latihan Pilihan Ganda</h3>
             <p class="text-lg text-gray-400 mb-4">Pilih jawaban yang benar untuk melengkapi kalimat dalam Present Continuous Tense:</p>
             <div id="quiz-present-continuous">
@@ -561,14 +603,12 @@
         <div class="bg-gray-800 rounded p-6">
             <h3 class="text-3xl font-semibold mb-4">Apa itu Past Continuous Tense?</h3>
             <p class="text-lg text-gray-400 mb-4">Past Continuous Tense digunakan untuk menyatakan aktivitas yang sedang berlangsung di masa lalu pada waktu tertentu.</p>
-            
             <h3 class="text-2xl font-semibold mb-2">Struktur Kalimat</h3>
             <ul class="text-lg text-gray-400 list-disc list-inside mb-4">
                 <li><strong>Positif:</strong> Subject + was/were + Verb-ing <br>Contoh: She was studying English at 7 PM yesterday.</li>
                 <li><strong>Negatif:</strong> Subject + was/were + not + Verb-ing <br>Contoh: They were not playing football.</li>
                 <li><strong>Pertanyaan:</strong> Was/Were + Subject + Verb-ing? <br>Contoh: Was he watching TV?</li>
             </ul>
-
             <h3 class="text-2xl font-semibold mb-2">Contoh Kalimat</h3>
             <ul class="text-lg text-gray-400 list-disc list-inside mb-4">
                 <li>I was reading a book at 8 PM last night.</li>
@@ -576,7 +616,6 @@
                 <li>We were not working at that time.</li>
                 <li>Was she cooking dinner?</li>
             </ul>
-
             <h3 class="text-2xl font-semibold mb-2">Latihan Pilihan Ganda</h3>
             <p class="text-lg text-gray-400 mb-4">Pilih jawaban yang benar untuk melengkapi kalimat dalam Past Continuous Tense:</p>
             <div id="quiz-past-continuous">
@@ -622,14 +661,12 @@
         <div class="bg-gray-800 rounded p-6">
             <h3 class="text-3xl font-semibold mb-4">Apa itu Present Perfect Tense?</h3>
             <p class="text-lg text-gray-400 mb-4">Present Perfect Tense digunakan untuk menyatakan aksi yang telah selesai di masa sekarang atau memiliki dampak hingga saat ini.</p>
-            
             <h3 class="text-2xl font-semibold mb-2">Struktur Kalimat</h3>
             <ul class="text-lg text-gray-400 list-disc list-inside mb-4">
                 <li><strong>Positif:</strong> Subject + have/has + Verb3 <br>Contoh: She has finished her homework.</li>
                 <li><strong>Negatif:</strong> Subject + have/has + not + Verb3 <br>Contoh: They have not seen the movie.</li>
                 <li><strong>Pertanyaan:</strong> Have/Has + Subject + Verb3? <br>Contoh: Has he visited Paris?</li>
             </ul>
-
             <h3 class="text-2xl font-semibold mb-2">Contoh Kalimat</h3>
             <ul class="text-lg text-gray-400 list-disc list-inside mb-4">
                 <li>I have just eaten lunch.</li>
@@ -637,15 +674,14 @@
                 <li>We have not finished the project.</li>
                 <li>Have they traveled abroad?</li>
             </ul>
-
             <h3 class="text-2xl font-semibold mb-2">Latihan Pilihan Ganda</h3>
             <p class="text-lg text-gray-400 mb-4">Pilih jawaban yang benar untuk melengkapi kalimat dalam Present Perfect Tense:</p>
             <div id="quiz-present-perfect">
                 <div class="mb-6">
                     <p class="text-lg text-gray-300 mb-2">1. She ___ her homework.</p>
                     <label class="block text-base text-gray-400"><input type="radio" name="pp-q1" value="has finished"> has finished</label>
+                    <label class="block text-base text-gray-400"><input type="radio" name="pp-q1" value="finished"> finished</label>
                     <label class="block text-base text-gray-400"><input type="radio" name="pp-q1" value="finishes"> finishes</label>
-                    <label class="block text-base text-gray-400"><input type="radio" name="pp-q1" value="finishing"> finishing</label>
                 </div>
                 <div class="mb-6">
                     <p class="text-lg text-gray-300 mb-2">2. They ___ (not/see) the new movie.</p>
@@ -654,7 +690,7 @@
                     <label class="block text-base text-gray-400"><input type="radio" name="pp-q2" value="not seeing"> not seeing</label>
                 </div>
                 <div class="mb-6">
-                    <p class="text-lg text-gray-300 mb-2">3. ___ you ___ (visit) London?</p>
+                    <p class="text-lg text-gray-300 mb-2">3. ___ you ___ (visit) Paris?</p>
                     <label class="block text-base text-gray-400"><input type="radio" name="pp-q3" value="Have ... visited"> Have ... visited</label>
                     <label class="block text-base text-gray-400"><input type="radio" name="pp-q3" value="Do ... visit"> Do ... visit</label>
                     <label class="block text-base text-gray-400"><input type="radio" name="pp-q3" value="Are ... visiting"> Are ... visiting</label>
@@ -683,22 +719,19 @@
         <div class="bg-gray-800 rounded p-6">
             <h3 class="text-3xl font-semibold mb-4">Apa itu Past Perfect Tense?</h3>
             <p class="text-lg text-gray-400 mb-4">Past Perfect Tense digunakan untuk menyatakan aksi yang selesai sebelum aksi lain di masa lalu.</p>
-            
             <h3 class="text-2xl font-semibold mb-2">Struktur Kalimat</h3>
             <ul class="text-lg text-gray-400 list-disc list-inside mb-4">
                 <li><strong>Positif:</strong> Subject + had + Verb3 <br>Contoh: She had finished her work before the meeting.</li>
                 <li><strong>Negatif:</strong> Subject + had + not + Verb3 <br>Contoh: They had not eaten dinner.</li>
                 <li><strong>Pertanyaan:</strong> Had + Subject + Verb3? <br>Contoh: Had he left already?</li>
             </ul>
-
             <h3 class="text-2xl font-semibold mb-2">Contoh Kalimat</h3>
             <ul class="text-lg text-gray-400 list-disc list-inside mb-4">
                 <li>I had completed the task before noon.</li>
                 <li>She had gone home before it rained.</li>
                 <li>We had not seen the film.</li>
-                <li>Had they finished the report?</li>
+                <li>Had they finished the project?</li>
             </ul>
-
             <h3 class="text-2xl font-semibold mb-2">Latihan Pilihan Ganda</h3>
             <p class="text-lg text-gray-400 mb-4">Pilih jawaban yang benar untuk melengkapi kalimat dalam Past Perfect Tense:</p>
             <div id="quiz-past-perfect">
@@ -740,29 +773,26 @@
 
     <!-- Creator Profile Section -->
     <section id="creator-profile" class="container mx-auto py-12">
-        <h2 class="text-4xl font-bold mb-6 text-center">Profil Pembuat</h2> <!-- Increased section heading -->
+        <h2 class="text-4xl font-bold mb-6 text-center">Profil Pembuat</h2>
         <div class="flex flex-col md:flex-row items-center bg-gray-800 rounded p-6">
-    <img src="sya.jpg" 
-        alt="Foto Pembuat" 
-        class="w-64 h-64 rounded-full object-cover mb-4 md:mb-0 md:mr-8 floating">
-
-    <div>
-    <h3 class="text-3xl font-semibold">Daniel</h3>
-    <p class="text-lg text-gray-400 mt-2">
-        Saya adalah seorang Mahasiswa TRPL yang bersemangat untuk membantu siswa memahami tata bahasa dengan cara yang mudah dan menyenangkan. Dengan pengalaman di bidang web development, saya merancang Dhanil's English Journey untuk membuat pembelajaran tenses lebih interaktif dan menarik.
-    </p>
-    <p class="text-lg text-gray-400 mt-2">Email: daniel@gmail.com</p>
-    <p class="text-lg text-gray-400">Pendidikan: D4 TRPL</p>
-    <p class="text-lg text-gray-400">Lokasi: Medan, Sumatera Utara</p>
-    </div>
-</div>
+            <img src="sya.jpg" alt="Foto Pembuat" class="w-64 h-64 rounded-full object-cover mb-4 md:mb-0 md:mr-8 floating">
+            <div>
+                <h3 class="text-3xl font-semibold">Daniel</h3>
+                <p class="text-lg text-gray-400 mt-2">
+                    Saya adalah seorang Mahasiswa TRPL yang bersemangat untuk membantu siswa memahami tata bahasa dengan cara yang mudah dan menyenangkan. Dengan pengalaman di bidang web development, saya merancang Dhanil's English Journey untuk membuat pembelajaran tata bahasa lebih interaktif dan menarik.
+                </p>
+                <p class="text-lg text-gray-400 mt-2">Email: daniel@gmail.com</p>
+                <p class="text-lg text-gray-400">Pendidikan: D4 TRPL</p>
+                <p class="text-lg text-gray-400">Lokasi: Medan, Sumatera Utara</p>
+            </div>
+        </div>
     </section>
 
     <!-- Footer -->
     <footer class="bg-gray-900 py-6">
         <div class="container mx-auto text-center">
-            <p class="text-base">© 2025 Dhaniel. Semua hak dilindungi.</p> <!-- Increased footer text -->
-            <div class="mt-4 space-x-4 text-base"> <!-- Increased link text -->
+            <p class="text-base">© 2025 Daniel. Semua hak dilindungi.</p>
+            <div class="mt-4 space-x-4 text-base">
                 <a href="#" class="hover:text-red-600">Kebijakan Privasi</a>
                 <a href="#" class="hover:text-red-600">Syarat & Ketentuan</a>
                 <a href="#" class="hover:text-red-600">Hubungi Kami</a>
@@ -771,18 +801,31 @@
     </footer>
 
     <script>
+        // Ensure all learning sections are hidden on page load
+        window.addEventListener('load', () => {
+            document.querySelectorAll('.learning-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            // Handle URL hash without activating learning sections
+            if (window.location.hash) {
+                const sectionId = window.location.hash.substring(1);
+                const targetSection = document.getElementById(sectionId);
+                if (targetSection && !targetSection.classList.contains('learning-section')) {
+                    targetSection.scrollIntoView({ behavior: 'smooth' });
+                }
+            }
+        });
+
         // Smooth scroll for navigation
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const sectionId = this.getAttribute('href').substring(1);
-                
-                // Special case for "Beranda" link
                 if (sectionId === 'home') {
-                    const startLearningButton = document.querySelector('.hero-section a');
-                    if (startLearningButton) {
-                        startLearningButton.scrollIntoView({ behavior: 'smooth' });
-                    }
+                    document.querySelectorAll('.learning-section').forEach(section => {
+                        section.classList.remove('active');
+                    });
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
                 } else {
                     scrollToSection(sectionId);
                 }
@@ -790,8 +833,8 @@
         });
 
         // Carousel scroll function
-        function scrollCarousel(direction) {
-            const carousel = document.querySelector('.carousel');
+        function scrollCarousel(carouselId, direction) {
+            const carousel = document.getElementById(`${carouselId}-carousel`);
             const scrollAmount = 300;
             if (direction === 'left') {
                 carousel.scrollLeft -= scrollAmount;
@@ -802,15 +845,11 @@
 
         // Scroll to section and toggle visibility
         function scrollToSection(sectionId) {
-            // Hide all learning sections
             document.querySelectorAll('.learning-section').forEach(section => {
                 section.classList.remove('active');
             });
-
-            // Scroll to the target section
             const targetSection = document.getElementById(sectionId);
             if (targetSection) {
-                // Only show the section if it's a learning section
                 if (targetSection.classList.contains('learning-section')) {
                     targetSection.classList.add('active');
                 }
@@ -869,24 +908,29 @@
                     'ppf-q3': 'Had ... left',
                     'ppf-q4': 'had read',
                     'ppf-q5': 'had not seen'
+                },
+                'active-passive': {
+                    'ap-q1': 'is cleaned',
+                    'ap-q2': 'wrote',
+                    'ap-q3': 'will be completed',
+                    'ap-q4': 'are painting',
+                    'ap-q5': 'was read'
                 }
             };
             let score = 0;
             const resultDiv = document.getElementById(`result-${sectionId}`);
-            
             for (let i = 1; i <= 5; i++) {
                 const selected = document.querySelector(`input[name="${prefix}-q${i}"]:checked`);
                 if (selected && selected.value === correctAnswers[sectionId][`${prefix}-q${i}`]) {
                     score++;
                 }
             }
-
             resultDiv.style.display = 'block';
             if (score === 5) {
-                resultDiv.className = 'result-message correct';
+                resultDiv.className = 'result-message correct text-base';
                 resultDiv.textContent = `Selamat! Anda menjawab ${score}/5 dengan benar.`;
             } else {
-                resultDiv.className = 'result-message incorrect';
+                resultDiv.className = 'result-message incorrect text-base';
                 resultDiv.textContent = `Anda menjawab ${score}/5 dengan benar. Coba lagi!`;
             }
         }
@@ -896,7 +940,6 @@
         const loginModal = document.getElementById('login-modal');
         const cancelBtn = document.getElementById('cancel-btn');
         const submitLogin = document.getElementById('submit-login');
-        const loginForm = document.getElementById('login-form');
         const successMessage = document.getElementById('success-message');
         const closeSuccess = document.getElementById('close-success');
         const emailInput = document.getElementById('email');
@@ -927,7 +970,6 @@
             }
         });
 
-        // Close modal when clicking outside
         loginModal.addEventListener('click', (e) => {
             if (e.target === loginModal) {
                 loginModal.style.display = 'none';
